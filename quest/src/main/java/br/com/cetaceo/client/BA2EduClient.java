@@ -9,6 +9,9 @@ import br.com.cetaceo.dto.BA2EduTesteDTO;
 @FeignClient("ba2edu")
 public interface BA2EduClient {
 
-	@RequestMapping("/ba2edu/teste/{value}")
-	BA2EduTesteDTO getBA2EduTeste(@PathVariable String value);
+	@RequestMapping("/ba2edu/myendpoint/{value}")
+	BA2EduTesteDTO getBA2EduPub(@PathVariable String value);
+	
+	@RequestMapping("/ba2edu/a/myendpoint/{value}")
+	BA2EduTesteDTO getBA2EduAut(@PathVariable String value);
 }

@@ -13,13 +13,22 @@ public class BA2EduController {
 
 	private final Logger LOG = LoggerFactory.getLogger(getClass());
 	
-	@GetMapping(path = {"/teste","/teste/{value}"})
-	public BA2EduTesteDTO ba2eduTeste(@PathVariable(required = false) String value) {
+	@GetMapping(path = {"/myendpoint","/myendpoint/{value}"})
+	public BA2EduTesteDTO ba2eduPub(@PathVariable(required = false) String value) {
+		return createDto(value,"público");
+	}
+	
+	@GetMapping(path = {"/a/myendpoint","/a/myendpoint/{value}"})
+	public BA2EduTesteDTO ba2eduAut(@PathVariable(required = false) String value) {
+		return createDto(value,"autenticado");
+	}
+	
+	private BA2EduTesteDTO createDto(String value, String type) {
 		BA2EduTesteDTO dto = new BA2EduTesteDTO();
 		dto.setProjectName("Business Analytics for Education");
 		dto.setParamValue(value);
 		dto.setProjectVersion(Long.parseLong("2"));
-		LOG.info("Devolvendo informação para API");
+		dto.setType(type);
 		return dto;
 	}
 }

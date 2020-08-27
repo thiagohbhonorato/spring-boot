@@ -5,6 +5,7 @@ public class BA2EduTesteDTO {
 	String projectName;
 	String paramValue;
 	Long projectVersion;
+	String type;
 	
 	public String getProjectName() {
 		return projectName;
@@ -23,5 +24,11 @@ public class BA2EduTesteDTO {
 	}
 	public void setProjectVersion(Long projectVersion) {
 		this.projectVersion = projectVersion;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 }

@@ -20,12 +20,22 @@ public class QuestController {
 	}
 	
 	@GetMapping("/myendpoint")
-	public String myendpoint() {
-		return "REST Quest";
+	public String myendpointPub() {
+		return "REST Quest público";
+	}
+	
+	@GetMapping("/a/myendpoint")
+	public String myendpointAut() {
+		return "REST Quest autenticado";
 	}
 	
 	@GetMapping(path = {"/ba2edu","/ba2edu/{value}"})
-	public BA2EduTesteDTO ba2Edu(@PathVariable(required = false) String value) {
-		return questService.ba2EduTeste(value);
+	public BA2EduTesteDTO ba2EduPub(@PathVariable(required = false) String value) {
+		return questService.ba2EduPub(value);
+	}
+	
+	@GetMapping(path = {"/a/ba2edu","/a/ba2edu/{value}"})
+	public BA2EduTesteDTO ba2EduAut(@PathVariable(required = false) String value) {
+		return questService.ba2EduAut(value);
 	}
 }
