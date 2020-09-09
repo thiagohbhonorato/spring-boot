@@ -1,2 +1,2 @@
-# cetaceo-spring-boot
-Arquitetura Spring Boot - CetaCEO
+# Spring Boot
+Arquitetura Spring Boot
