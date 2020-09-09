@@ -1,13 +1,23 @@
 package br.com.cetaceo.model;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter @Setter
 public class Quest {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,37 +27,5 @@ public class Quest {
 	
 	private String descricao;
 	
-	private Date datacriacao;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public Date getDatacriacao() {
-		return datacriacao;
-	}
-
-	public void setDatacriacao(Date datacriacao) {
-		this.datacriacao = datacriacao;
-	}
+	private LocalDateTime dataCriacao;
 }

@@ -1,6 +1,6 @@
 package br.com.cetaceo.service;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.cetaceo.client.BA2EduClient;
-import br.com.cetaceo.dto.BA2EduTesteDTO;
+import br.com.cetaceo.dto.BA2EduTesteDto;
 import br.com.cetaceo.form.QuestForm;
 import br.com.cetaceo.model.Quest;
 import br.com.cetaceo.repository.QuestRepository;
@@ -21,21 +21,11 @@ public class QuestService {
 	@Autowired
 	private QuestRepository questRepository;
 	
-	@Autowired
-	private BA2EduClient ba2EduClient;
-	
-	public BA2EduTesteDTO ba2EduPub(String value) {
-		BA2EduTesteDTO ba2Edu = ba2EduClient.getBA2EduPub(value);
-		return ba2Edu;
-	}
-	
-	public BA2EduTesteDTO ba2EduAut(String value) {
-		BA2EduTesteDTO ba2Edu = ba2EduClient.getBA2EduAut(value);
-		return ba2Edu;
-	}
-
 	public Quest getQuestionario(Long id) {
-		return questRepository.findById(id).orElse(new Quest());
+		Optional<Quest> optional = questRepository.findById(id);
+		if ( optional.isPresent() )
+			return optional.get();
+		else return null;
 	}
 
 	public Iterable<Quest> getQuestionarios() {
@@ -46,7 +36,7 @@ public class QuestService {
 		questRepository.deleteById(id);
 	}
 
-	public void saveQuestionario(QuestForm questForm) {
-		questRepository.save(questForm.converter());
+	public Quest saveQuestionario(QuestForm questForm) {
+		return questRepository.save(questForm.converter());
 	}
 }

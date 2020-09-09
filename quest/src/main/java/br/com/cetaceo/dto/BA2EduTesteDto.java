@@ -1,6 +1,6 @@
 package br.com.cetaceo.dto;
 
-public class BA2EduTesteDTO {
+public class BA2EduTesteDto {
 
 	String projectName;
 	String paramValue;
