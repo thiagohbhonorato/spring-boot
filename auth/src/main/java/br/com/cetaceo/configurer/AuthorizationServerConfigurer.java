@@ -9,7 +9,7 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 
-import br.com.cetaceo.service.ClientService;
+import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 public class AuthorizationServerConfigurer extends AuthorizationServerConfigurerAdapter {
@@ -21,20 +21,15 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
 	private UserDetailsService userDetailsService;
 	
 	@Autowired
-	private ClientService clientDetailsService;
+	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
-	private PasswordEncoder passwordEncoder;
+	private HikariDataSource dataSource;
 	
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		//clients.withClientDetails(clientDetailsService);
-		clients.inMemory()
-			.withClient("quest")
-			.secret(passwordEncoder.encode("questpwd"))
-			.authorizedGrantTypes("password")
-			.scopes("web","mobile");
-		
+		clients.jdbc(dataSource)
+			.passwordEncoder(passwordEncoder);
 	}
 	
 	@Override
