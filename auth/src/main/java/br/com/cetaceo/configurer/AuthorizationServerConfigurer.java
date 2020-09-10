@@ -9,6 +9,8 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 
+import br.com.cetaceo.service.ClientService;
+
 @Configuration
 public class AuthorizationServerConfigurer extends AuthorizationServerConfigurerAdapter {
 
@@ -19,18 +21,20 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
 	private UserDetailsService userDetailsService;
 	
 	@Autowired
+	private ClientService clientDetailsService;
+	
+	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
-	/**
-	 * BUSCAR DO BANCO DE DADOS?
-	 */
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+		//clients.withClientDetails(clientDetailsService);
 		clients.inMemory()
 			.withClient("quest")
 			.secret(passwordEncoder.encode("questpwd"))
 			.authorizedGrantTypes("password")
 			.scopes("web","mobile");
+		
 	}
 	
 	@Override
