@@ -1,5 +1,7 @@
 package br.com.cetaceo.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,9 +26,9 @@ public class TesteController {
 		return "REST Quest público";
 	}
 	
-	@GetMapping("/a/myendpoint")
-	public String myendpointAut() {
-		return "REST Quest autenticado";
+	@GetMapping("/u/myendpoint")
+	public String myendpointAut(Principal user) {
+		return "REST Quest autenticado: " + user;
 	}
 	
 	@GetMapping(path = {"/ba2edu","/ba2edu/{value}"})
@@ -34,7 +36,7 @@ public class TesteController {
 		return ba2eduService.ba2EduPub(value);
 	}
 	
-	@GetMapping(path = {"/a/ba2edu","/a/ba2edu/{value}"})
+	@GetMapping(path = {"/u/ba2edu","/u/ba2edu/{value}"})
 	public BA2EduTesteDto ba2EduAut(@PathVariable(required = false) String value) {
 		return ba2eduService.ba2EduAut(value);
 	}

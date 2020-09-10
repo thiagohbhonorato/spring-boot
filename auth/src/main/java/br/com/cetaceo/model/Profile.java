@@ -12,7 +12,7 @@ import lombok.Setter;
 
 @Entity(name = "ctrprofile")
 @Getter @Setter
-public class CtrProfile implements GrantedAuthority {
+public class Profile implements GrantedAuthority {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -23,7 +23,6 @@ public class CtrProfile implements GrantedAuthority {
 	
 	@Override
 	public String getAuthority() {
-		return this.name;
+		return "ROLE_".concat(this.name);
 	}
-	
 }

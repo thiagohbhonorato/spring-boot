@@ -30,12 +30,12 @@ public class QuestController {
 	@Autowired
 	private QuestService questService;
 	
-	@GetMapping("/a/questionarios")
+	@GetMapping("/u/questionarios")
 	public Iterable<Quest> getAll() {
 		return questService.getQuestionarios();
 	}
 	
-	@GetMapping("/a/questionario/{id}")
+	@GetMapping("/u/questionario/{id}")
 	public ResponseEntity<Quest> getById(@PathVariable Long id) {
 		Quest quest = questService.getQuestionario(id);
 		if ( quest != null )
@@ -45,15 +45,15 @@ public class QuestController {
 	}
 	
 	@Transactional
-	@PostMapping("/a/questionario/")
+	@PostMapping("/u/questionario/")
 	public ResponseEntity<QuestDto> save(@RequestBody @Valid QuestForm questForm, UriComponentsBuilder uriBuilder) {
 		Quest quest = questService.saveQuestionario(questForm);
-		URI uri = uriBuilder.path("/a/questionario/{id}").buildAndExpand(quest.getId()).toUri();
+		URI uri = uriBuilder.path("/u/questionario/{id}").buildAndExpand(quest.getId()).toUri();
 		return ResponseEntity.created(uri).body(new QuestDto(quest));
 	}
 	
 	@Transactional
-	@PutMapping("/a/questionario/{id}")
+	@PutMapping("/u/questionario/{id}")
 	public ResponseEntity<QuestDto> update(@PathVariable Long id, @RequestBody @Valid QuestForm questForm) {
 		Quest quest = questService.getQuestionario(id);
 		if ( quest != null ) {
@@ -64,7 +64,7 @@ public class QuestController {
 	}
 	
 	@Transactional
-	@DeleteMapping("/a/questionario/{id}")
+	@DeleteMapping("/u/questionario/{id}")
 	public ResponseEntity<?> deleteById(@PathVariable Long id) {
 		Quest quest = questService.getQuestionario(id);
 		if ( quest != null ) {

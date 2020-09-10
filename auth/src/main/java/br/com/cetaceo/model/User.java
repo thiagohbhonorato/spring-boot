@@ -18,7 +18,7 @@ import lombok.Setter;
 
 @Entity(name = "ctruser")
 @Getter @Setter
-public class CtrUser implements UserDetails {
+public class User implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -31,7 +31,7 @@ public class CtrUser implements UserDetails {
 	private boolean credentialsNonExpired;
 	private boolean enabled;
 	@ManyToMany(fetch = FetchType.EAGER)
-	private List<CtrProfile> ctrprofile;
+	private List<Profile> ctrprofile;
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

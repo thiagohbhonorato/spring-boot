@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import br.com.cetaceo.model.CtrUser;
+import br.com.cetaceo.model.User;
 import br.com.cetaceo.repository.UserRepository;
 
 @Service
@@ -19,8 +19,7 @@ public class UserService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		System.out.println("UserService.loadUserByUsername: " + username);
-		Optional<CtrUser> optional = userRepository.findByUsername(username);
+		Optional<User> optional = userRepository.findByUsername(username);
 		if ( optional.isPresent() )
 			return optional.get();
 		else

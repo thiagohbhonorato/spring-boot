@@ -18,7 +18,7 @@ public class BA2EduController {
 		return createDto(value,"público");
 	}
 	
-	@GetMapping(path = {"/a/myendpoint","/a/myendpoint/{value}"})
+	@GetMapping(path = {"/u/myendpoint","/u/myendpoint/{value}"})
 	public BA2EduTesteDTO ba2eduAut(@PathVariable(required = false) String value) {
 		return createDto(value,"autenticado");
 	}

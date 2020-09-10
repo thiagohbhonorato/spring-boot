@@ -4,9 +4,9 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.cetaceo.model.CtrUser;
+import br.com.cetaceo.model.User;
 
-public interface UserRepository extends JpaRepository<CtrUser, Long>{
+public interface UserRepository extends JpaRepository<User, Long>{
 
-	Optional<CtrUser> findByUsername(String username);
+	Optional<User> findByUsername(String username);
 }

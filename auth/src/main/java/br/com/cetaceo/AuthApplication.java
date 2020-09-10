@@ -21,7 +21,6 @@ public class AuthApplication {
 
 	@RequestMapping("/user")
 	public Principal user(Principal user) {
-		System.out.println("get principal: "+user);
 		return user;
 	}
 }
