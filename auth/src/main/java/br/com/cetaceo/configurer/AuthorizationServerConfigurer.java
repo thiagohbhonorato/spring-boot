@@ -8,6 +8,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenStore;
 
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -24,6 +26,9 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
 	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
+	private TokenStore tokenStore;
+	
+	@Autowired
 	private HikariDataSource dataSource;
 	
 	@Override
@@ -36,6 +41,13 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		endpoints
 			.authenticationManager(authenticationManager)
-			.userDetailsService(userDetailsService);
+			.userDetailsService(userDetailsService)
+			.tokenStore(tokenStore)
+			.reuseRefreshTokens(false);
+	}
+	
+	@Override
+	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+		security.checkTokenAccess("isAuthenticated()");
 	}
 }
