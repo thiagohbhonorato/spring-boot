@@ -9,12 +9,14 @@ import javax.annotation.Resource;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
 import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,7 +54,7 @@ public class AuthApplication {
 	    }
 	    
 	    if ( !isAdmin )
-	    	return ResponseEntity.badRequest().build();
+	    	return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 	    
 	    List<String> tokenValues = new ArrayList<String>();
 	    Collection<OAuth2AccessToken> tokens = tokenStore.findTokensByClientId(clientId); 
@@ -67,10 +69,17 @@ public class AuthApplication {
 	@Resource(name="tokenServices")
 	ConsumerTokenServices tokenServices;
 		
-	@RequestMapping(method = RequestMethod.POST, value = "/tokens/revoke/{tokenId}")
+	@RequestMapping(method = RequestMethod.POST, value = {"/tokens/revoke","/tokens/revoke/{tokenId}"})
 	@ResponseBody
-	public String revokeToken(@PathVariable String tokenId) {
-	    tokenServices.revokeToken(tokenId);
-	    return tokenId;
+	public ResponseEntity<?> revokeToken(@PathVariable(required = false) String tokenId, Principal user) {
+		if ( tokenId == null ) {
+			OAuth2AuthenticationDetails details = (OAuth2AuthenticationDetails) ((OAuth2Authentication) user).getDetails();
+			tokenId = details.getTokenValue();
+		}
+		
+	    if ( tokenServices.revokeToken(tokenId) )
+	    	return ResponseEntity.ok().build();
+	    else
+	    	return ResponseEntity.notFound().build();
 	}
 }
