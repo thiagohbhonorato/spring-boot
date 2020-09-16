@@ -64,3 +64,18 @@ O resultado será algo assim:
     </application>
 </applications>
 ```
+
+## Informações adicionais
+### Versão
+* Spring 2.3.3.RELEASE
+* Java 1.8
+* Spring Cloud Hoxton.SR7
+
+### Dependência *pom.xml*
+**Eureka Server**
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+</dependency>
+```
