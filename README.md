@@ -5,7 +5,7 @@ Esse projeto consiste em uma arquitetura back-end feita em Java utilizando o fra
 Nessa arquitetura foram utilizadas tecnologias...
 
 * **Eureka Server**
-Consiste em uma aplicação que atua como Service Registry permitindo que outras aplicações registrem suas instâncias, com isso, ele controla os endereços registrados mantendo-os atualizados e sinalizando quando um serviço não está disponível.
+Consiste em uma aplicação que atua como Service Registry permitindo que outras aplicações registrem suas instâncias, com isso, ele controla os endereços registrados mantendo-os atualizados e sinalizando quando um serviço não está disponível. [[mais](https://github.com/thiagohbhonorato/spring-boot/tree/master/eureka)]
 
 * **Config Server**
 É um microserviço onde outros microserviços consultam as propriedades da própria aplicação. Quando a aplicação “cliente” sobe, usa a configuração de servidor de configuração e pergunta para o serviço de Config Server quais configurações precisa aplicar, se identificando pelo nome da aplicação.
