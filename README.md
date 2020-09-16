@@ -1,4 +1,6 @@
 # Arquitetura back-end Java com Spring Boot
+![shield](https://img.shields.io/badge/ThiagoHonorato-SpringBoot-orange)
+
 Esse projeto consiste em uma arquitetura back-end feita em Java utilizando o framework Spring Boot. Seu objetivo é ser a arquitetura base para a criação de diversos microserviços. Inicialmente essa arquitetura foi criada para o desenvolvimento de uma aplicação de questionário.
 
 ## Sobre a Arquitetura
@@ -19,4 +21,4 @@ Funciona como uma porta de entrada da aplicação, todo o tráfego passa por ele
 * **API Quest**
 Refere-se ao microserviço do sistema de questionário que possui as regras de negócios da aplicação.
 
-![alt text](https://github.com/thiagohbhonorato/spring-boot/blob/master/docs/arquitetura_spring_boot.png "Arquitetura")
+![arquitetura](https://github.com/thiagohbhonorato/spring-boot/blob/master/docs/arquitetura_spring_boot.png "Arquitetura")
