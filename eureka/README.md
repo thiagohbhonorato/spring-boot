@@ -72,7 +72,7 @@ O resultado será algo assim:
 * Spring Cloud Hoxton.SR7
 
 ### Dependência *pom.xml*
-**Eureka Server**
+* Eureka Server
 ```xml
 <dependency>
     <groupId>org.springframework.cloud</groupId>
