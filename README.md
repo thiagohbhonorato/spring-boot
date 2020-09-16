@@ -4,7 +4,7 @@
 Esse projeto consiste em uma arquitetura back-end feita em Java utilizando o framework Spring Boot. Seu objetivo é ser a arquitetura base para a criação de diversos microserviços. Inicialmente essa arquitetura foi criada para o desenvolvimento de uma aplicação de questionário.
 
 ## Sobre a Arquitetura
-Nessa arquitetura foram utilizadas tecnologias...
+Nessa arquitetura foram utilizadas as seguintes tecnologias:
 
 * **Eureka Server**
 Consiste em uma aplicação que atua como Service Registry permitindo que outras aplicações registrem suas instâncias, com isso, ele controla os endereços registrados mantendo-os atualizados e sinalizando quando um serviço não está disponível. [[mais](https://github.com/thiagohbhonorato/spring-boot/tree/master/eureka)]
