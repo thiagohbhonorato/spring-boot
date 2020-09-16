@@ -19,4 +19,4 @@ Funciona como uma porta de entrada da aplicação, todo o tráfego passa por ele
 * **API Quest**
 Refere-se ao microserviço do sistema de questionário que possui as regras de negócios da aplicação.
 
-![alt text](https://github.com/thiagohbhonorato/spring-boot/blob/master/docs/arquitetura.png "Arquitetura")
+![alt text](https://github.com/thiagohbhonorato/spring-boot/blob/master/docs/arquitetura_spring_boot.png "Arquitetura")
