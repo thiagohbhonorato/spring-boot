@@ -1,6 +1,9 @@
 # Config Server
 É um microserviço onde outros microserviços consultam as propriedades da própria aplicação. Quando a aplicação “cliente” sobe, usa a configuração de servidor de configuração e pergunta para o serviço de Config Server quais configurações precisa aplicar, se identificando pelo nome da aplicação.
 
+
+Esse recurso pode ser muito útil para configurações de conexão com banco de dados, dessa forma essas configurações não ficam dentro dos diversos microserviços, facilitando a manutenção, pois estão em um ponto único.
+
 ## application.properties
 ```application.properties
 server.port=8888
