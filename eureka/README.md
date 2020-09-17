@@ -79,3 +79,16 @@ O resultado será algo assim:
     <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 </dependency>
 ```
+
+### Habilitar o Eureka Server
+Para habilitar e executar o servidor eureka adicione `@EnableEurekaServer` como no exemplo a seguir:
+```java
+@SpringBootApplication
+@EnableEurekaServer // <- aqui
+public class EurekaApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(EurekaApplication.class, args);
+    }
+}
+```
