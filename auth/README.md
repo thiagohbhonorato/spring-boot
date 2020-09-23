@@ -24,6 +24,38 @@ spring.jpa.properties.hibernate.format_sql=true
     ```
 
 ## Endpoint
+### Token de acesso
+
+Para obter um token de acesso utilize: http://localhost:8088/oauth/token
+    
+Esse solicitação necessita das seguintes informações:
+    
+1. Authorization
+    - Type: Basic Auth
+    - username: *(identificação do client)*
+    - password: *(senha do client)*
+    
+2. Body
+    - grant_type: password
+    - scope: web
+    - username: *(identificação do usuário)*
+    - password: *(senha do usuário)*
+
+O resultado será algo assim:
+```json
+{
+    "access_token": "a45e5e21-9063-4403-9be9-d9128ab195ae",
+    "token_type": "bearer",
+    "refresh_token": "642c153e-7317-48cb-a632-d7cbc76fbe22",
+    "expires_in": 35999,
+    "scope": "web"
+}
+```
+
+Exemplo:
+```javascript
+const a;
+```
 
 ## Informações adicionais
 
