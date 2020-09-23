@@ -54,7 +54,8 @@ O resultado será algo assim:
 
 Exemplo:
 ```javascript
-const a;
+fetch('http://localhost:8088/oauth/token/',{method:'POST'})
+    .then(res=>res.json());
 ```
 
 ## Informações adicionais
