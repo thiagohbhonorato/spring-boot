@@ -41,6 +41,23 @@ Esse solicitação necessita das seguintes informações:
     - username: *(identificação do usuário)*
     - password: *(senha do usuário)*
 
+Exemplo:
+```javascript
+// em fase de testes
+fetch('http://localhost:8088/oauth/token/',{
+    method:'POST',
+    headers: {
+        'Authorization': 'Basic cXVlc3Q6MTIzNA=='
+    },
+    body: JSON.stringify({
+        'scope': 'web',
+        'grant_type': 'password',
+        'username': 'thiagohbhonorato@gmail.com',
+        'password': '1234'
+    })
+}).then(res=>res.json());
+```
+
 O resultado será algo assim:
 ```json
 {
@@ -50,12 +67,6 @@ O resultado será algo assim:
     "expires_in": 35999,
     "scope": "web"
 }
-```
-
-Exemplo:
-```javascript
-fetch('http://localhost:8088/oauth/token/',{method:'POST'})
-    .then(res=>res.json());
 ```
 
 ## Informações adicionais
