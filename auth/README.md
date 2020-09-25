@@ -29,15 +29,16 @@ spring.jpa.properties.hibernate.format_sql=true
 Para obter um token de acesso utilize: http://localhost:8088/oauth/token
     
 Essa solicitação necessita das seguintes informações:
-    
-1. Headers: Authorization
+ 
+1. `Method: POST`
+2. Headers: Authorization
     - Type: Basic Auth
     - username: *(identificação do client)*
     - password: *(senha do client)*
     
     Exemplo: `(..).set('Authorization', 'Basic Base64Encode==') // o username e password são criptografados em Base64`
     
-2. Body
+3. Body
     - grant_type: password
     - scope: web
     - username: *(identificação do usuário)*
@@ -54,15 +55,16 @@ Para obter um novo token de acesso por meio de um token de atualização, utiliz
 >*Veja que a URI do serviço é a mesma para obter um token de acesso, a diferença está a seguir:*
 
 Essa solicitação necessita das seguintes informações:
-    
-1. Headers: Authorization *(mesma configuração do token de acesso)*
+ 
+1. `Method: POST`
+2. Headers: Authorization *(mesma configuração do token de acesso)*
     - Type: Basic Auth
     - username: *(identificação do client)*
     - password: *(senha do client)*
     
     Exemplo: `(..).set('Authorization', 'Basic Base64Encode==') // o username e password são criptografados em Base64`
     
-2. Body
+3. Body
     - grant_type: refresh_token
     - scope: web
     - refresh_token: *(token de atualização obtido junto com o token de acesso)*
@@ -75,13 +77,20 @@ Exemplo utilizando a ferramenta [Postman](https://www.postman.com/):
 
 Para invalidar um token de acesso utilize:
 1. http://localhost:8088/tokens/revoke/{token}
-    O token é passado como parêmtro na URL
+    
+    O token é passado como parêmtro na URL.
+    
 2. http://localhost:8088/tokens/revoke/
-    Nesse opção o token é enviado no cabeçalho da requisição (Header -> Authorization)
+    
+    Nesse opção o token é enviado no cabeçalho da requisição (Header -> Authorization).
+    
+Utilize `Method DELETE`
+
+
 
 Exemplo utilizando a ferramenta [Postman](https://www.postman.com/):
 
-![oauth_revoke_token](https://github.com/thiagohbhonorato/spring-boot/blob/master/docs/oauth_refresh_token_postman.png "Exemplo da requisição Oauth - Revoke Token")
+![oauth_revoke_token](https://github.com/thiagohbhonorato/spring-boot/blob/master/docs/oauth_revoke_token_postman.png "Exemplo da requisição Oauth - Revoke Token")
 
 ## Informações adicionais
 
