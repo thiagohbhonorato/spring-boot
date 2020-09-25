@@ -28,12 +28,14 @@ spring.jpa.properties.hibernate.format_sql=true
 
 Para obter um token de acesso utilize: http://localhost:8088/oauth/token
     
-Esse solicitação necessita das seguintes informações:
+Essa solicitação necessita das seguintes informações:
     
-1. Authorization
+1. Headers: Authorization
     - Type: Basic Auth
     - username: *(identificação do client)*
     - password: *(senha do client)*
+    
+    Exemplo: `(..).set('Authorization', 'Basic Base64Encode==') // o username e password são criptografados em Base64`
     
 2. Body
     - grant_type: password
@@ -41,33 +43,9 @@ Esse solicitação necessita das seguintes informações:
     - username: *(identificação do usuário)*
     - password: *(senha do usuário)*
 
-Exemplo:
-```javascript
-// em fase de testes
-fetch('http://localhost:8088/oauth/token/',{
-    method:'POST',
-    headers: {
-        'Authorization': 'Basic cXVlc3Q6MTIzNA=='
-    },
-    body: JSON.stringify({
-        'scope': 'web',
-        'grant_type': 'password',
-        'username': 'thiagohbhonorato@gmail.com',
-        'password': '1234'
-    })
-}).then(res=>res.json());
-```
+Exemplo utilizando a ferramenta Postman:
 
-O resultado será algo assim:
-```json
-{
-    "access_token": "a45e5e21-9063-4403-9be9-d9128ab195ae",
-    "token_type": "bearer",
-    "refresh_token": "642c153e-7317-48cb-a632-d7cbc76fbe22",
-    "expires_in": 35999,
-    "scope": "web"
-}
-```
+![oauth_access_token](https://github.com/thiagohbhonorato/spring-boot/blob/master/docs/oauth_access_token_postman.png "Exemplo da requisição Oauth")
 
 ## Informações adicionais
 
