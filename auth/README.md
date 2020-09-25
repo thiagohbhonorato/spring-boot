@@ -45,7 +45,7 @@ Essa solicitação necessita das seguintes informações:
 
 Exemplo utilizando a ferramenta [Postman](https://www.postman.com/):
 
-![oauth_access_token](https://github.com/thiagohbhonorato/spring-boot/blob/master/docs/oauth_access_token_postman.png "Exemplo da requisição Oauth")
+![oauth_access_token](https://github.com/thiagohbhonorato/spring-boot/blob/master/docs/oauth_access_token_postman.png "Exemplo da requisição Oauth - Acces Token")
 
 ### Token de atualização / Refresh Token
 
@@ -69,8 +69,19 @@ Essa solicitação necessita das seguintes informações:
 
 Exemplo utilizando a ferramenta [Postman](https://www.postman.com/):
 
-![oauth_arefresh_token](https://github.com/thiagohbhonorato/spring-boot/blob/master/docs/oauth_refresh_token_postman.png "Exemplo da requisição Oauth")
+![oauth_refresh_token](https://github.com/thiagohbhonorato/spring-boot/blob/master/docs/oauth_refresh_token_postman.png "Exemplo da requisição Oauth - Refresh Token")
 
+### Invalidar Token de acesso / Revoke Token
+
+Para invalidar um token de acesso utilize:
+1. http://localhost:8088/tokens/revoke/{token}
+    O token é passado como parêmtro na URL
+2. http://localhost:8088/tokens/revoke/
+    Nesse opção o token é enviado no cabeçalho da requisição (Header -> Authorization)
+
+Exemplo utilizando a ferramenta [Postman](https://www.postman.com/):
+
+![oauth_revoke_token](https://github.com/thiagohbhonorato/spring-boot/blob/master/docs/oauth_refresh_token_postman.png "Exemplo da requisição Oauth - Revoke Token")
 
 ## Informações adicionais
 
