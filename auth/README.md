@@ -24,7 +24,7 @@ spring.jpa.properties.hibernate.format_sql=true
     ```
 
 ## Endpoint
-### Token de acesso
+### Token de acesso / Access Token
 
 Para obter um token de acesso utilize: http://localhost:8088/oauth/token
     
@@ -43,9 +43,34 @@ Essa solicitação necessita das seguintes informações:
     - username: *(identificação do usuário)*
     - password: *(senha do usuário)*
 
-Exemplo utilizando a ferramenta Postman:
+Exemplo utilizando a ferramenta [Postman](https://www.postman.com/):
 
 ![oauth_access_token](https://github.com/thiagohbhonorato/spring-boot/blob/master/docs/oauth_access_token_postman.png "Exemplo da requisição Oauth")
+
+### Token de atualização / Refresh Token
+
+Para obter um novo token de acesso por meio de um token de atualização, utilize: http://localhost:8088/oauth/token
+
+>*Veja que a URI do serviço é a mesma para obter um token de acesso, a diferença está a seguir:*
+
+Essa solicitação necessita das seguintes informações:
+    
+1. Headers: Authorization *(mesma configuração do token de acesso)*
+    - Type: Basic Auth
+    - username: *(identificação do client)*
+    - password: *(senha do client)*
+    
+    Exemplo: `(..).set('Authorization', 'Basic Base64Encode==') // o username e password são criptografados em Base64`
+    
+2. Body
+    - grant_type: refresh_token
+    - scope: web
+    - refresh_token: *(token de atualização obtido junto com o token de acesso)*
+
+Exemplo utilizando a ferramenta [Postman](https://www.postman.com/):
+
+![oauth_arefresh_token](https://github.com/thiagohbhonorato/spring-boot/blob/master/docs/oauth_refresh_token_postman.png "Exemplo da requisição Oauth")
+
 
 ## Informações adicionais
 
